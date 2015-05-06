@@ -1,6 +1,7 @@
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.SpeechAligner;
 import edu.cmu.sphinx.result.WordResult;
+import edu.cmu.sphinx.util.TimeFrame;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Dmitry Tishchenko on 05.05.15.
@@ -41,6 +43,22 @@ public class Main {
         SpeechAligner aligner = new SpeechAligner(amPath, dictPath, null);
         URL audioUrl = new File(audioPath).toURI().toURL();
         List<WordResult> wordResult = aligner.align(audioUrl, transcriptWords);
+
+        List<TimeFrame> interpolated = interpolateMissing(transcriptWords, wordResult);
         return wordResult;
+    }
+
+    private static List<TimeFrame> interpolateMissing(List<String> words, List<WordResult> results) {
+
+        TimestampInterpolator ts = new TimestampInterpolator(words, results);
+        return ts.getTnterpolatedTimestamps();
+//        long currentTimestamp = 0;
+//        ArrayList<TimeFrame> interpolated = new ArrayList<TimeFrame>();
+//        ListIterator<String> wordsIterator = words.listIterator();
+//        ListIterator<WordResult> resultsIterator = results.listIterator();
+//        while (resultsIterator.hasNext()) {
+//
+//        }
+//        return interpolated;
     }
 }
