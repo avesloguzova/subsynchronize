@@ -4,7 +4,6 @@ import edu.cmu.sphinx.result.WordResult;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -17,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Configuration configuration = new Configuration();
-
+//
         String audioPath = args[0];
         String scriptPath = args[1];
 
@@ -34,6 +33,9 @@ public class Main {
             SpeechAligner aligner = new SpeechAligner(amPath, dictPath, null);
             URL audioUrl = new File(audioPath).toURI().toURL();
             List<WordResult> wordResult = aligner.align(audioUrl, transcript);
+            for (WordResult wr : wordResult) {
+                System.out.println(wr.getWord().getSpelling());
+            }
         } catch(IOException e) {
             System.out.print(e.getMessage());
         }
