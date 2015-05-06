@@ -13,8 +13,8 @@ public class Main {
 
         Configuration configuration = new Configuration();
 
-        String audioPath = args[1];
-        String scriptPath = args[2];
+        String audioPath = args[0];
+        String scriptPath = args[1];
 
         // Set path to acoustic model.
         String amPath = "resource:/edu/cmu/sphinx/models/en-us/en-us";
