@@ -1,3 +1,5 @@
+package ru.spbau.devdays.subsync;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,9 +14,9 @@ public class UserInterface {
     private JTextField audioField;
     private JFileChooser addAudioDialog = new JFileChooser();
     private JTextField subscriptField;
-    private JFileChooser addScriptDialog = new JFileChooser();;
+    private JFileChooser addScriptDialog = new JFileChooser();
     private JTextField resultField;
-    private JFileChooser addResultDialog = new JFileChooser();;
+    private JFileChooser addResultDialog = new JFileChooser();
 
     private JButton runButton;
     private JButton addAudioButton;

@@ -1,3 +1,5 @@
+package ru.spbau.devdays.subsync;
+
 /**
  * Created by Dmitry Tishchenko on 06.05.15.
  */

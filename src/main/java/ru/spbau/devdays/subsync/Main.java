@@ -1,3 +1,5 @@
+package ru.spbau.devdays.subsync;
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -19,10 +21,7 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         UserInterface userInterface = new UserInterface();
-
-
         frame.getContentPane().add(userInterface.getPanel());
-
         //Display the window.
         frame.pack();
         frame.setVisible(true);

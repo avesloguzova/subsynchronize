@@ -1,3 +1,5 @@
+package ru.spbau.devdays.subsync;
+
 import edu.cmu.sphinx.api.SpeechAligner;
 import edu.cmu.sphinx.result.WordResult;
 import edu.cmu.sphinx.util.TimeFrame;
@@ -14,7 +16,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by sasha on 5/6/15.
+ * Created by avesloguzova on 5/6/15.
  */
 public class SrtGenerator {
     private final SpeechAligner aligner;
@@ -28,12 +30,18 @@ public class SrtGenerator {
     }
 
     public void generateSrt(String audioPath, String scriptPath, String resultPath) throws IOException {
-        SentenceTimestamping st = new SentenceTimestamping(Files.readAllLines(Paths.get(scriptPath)));
+        SentenceTimestamping sentenceTimestamping = new SentenceTimestamping(Files.readAllLines(Paths.get(scriptPath)));
         URL audioUrl = new File(audioPath).toURI().toURL();
-        List<String> transcriptWords = st.getWords();
-        List<WordResult> wordResult = aligner.align(audioUrl, transcriptWords);
+        List<WordResult> wordResult = aligner.align(audioUrl, sentenceTimestamping.getWords());
+        List<TimeFrame> timeFramesWords = interpolateMissing(sentenceTimestamping.getWords(),wordResult);
+        setSentenseTiming(timeFramesWords,sentenceTimestamping);
+        writeSrt(sentenceTimestamping,resultPath);
     }
 
+    private List<TimeFrame> interpolateMissing(List<String> words, List<WordResult> results) {
+        TimestampInterpolator ts = new TimestampInterpolator(words, results);
+        return ts.getTnterpolatedTimestamps();
+    }
     private void setSentenseTiming(List<TimeFrame> timeFramesWords,
                                    SentenceTimestamping timestamping) {
         for (Sentence sentence : timestamping.getSentence()) {
