@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using SubsynchronizeLib;
 
@@ -25,18 +26,18 @@ namespace GUI
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
-            int subtitleDurationInSec = 3;
+            int subtitleDurationInSec = 6;
             
             var streamChunker = new StreamChunker(textBox2.Text, subtitleDurationInSec);
             var byteChunks = streamChunker.GetStreams();
 
             StreamRecogniser recogniser = new StreamRecogniser();
 
-            List<String> texts = byteChunks.Select(chunk => recogniser.Recognise(chunk)).ToList();
+            List<String> texts = await Task.Run(() => byteChunks.Select(chunk => recogniser.Recognise(chunk)).ToList());
 
-            List<Subtitle> subtitles = Subtitle.GetSubtitles(texts, subtitleDurationInSec);
+            List<Subtitle> subtitles = await Task.Run(() => Subtitle.GetSubtitles(texts, subtitleDurationInSec));
 
             StringBuilder sb = new StringBuilder();
 
