@@ -1,8 +1,0 @@
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\bin\Debug\voice_recognition_c_sharp.exe.config
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\bin\Debug\voice_recognition_c_sharp.exe
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\bin\Debug\voice_recognition_c_sharp.pdb
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\bin\Debug\NAudio.dll
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\bin\Debug\NAudio.xml
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\obj\Debug\voice_recognition_c_sharp.csprojResolveAssemblyReference.cache
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\obj\Debug\voice_recognition_c_sharp.exe
-C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\voice_recognition_c_sharp\obj\Debug\voice_recognition_c_sharp.pdb
