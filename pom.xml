@@ -19,6 +19,11 @@
             <artifactId>sphinx4-data</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>it.sauronsoftware.jave</groupId>
+            <artifactId>jave</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
 

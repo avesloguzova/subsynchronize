@@ -29,8 +29,9 @@ public class SrtGenerator {
         aligner = new SpeechAligner(amPath, dictPath, null);
     }
 
-    public void generateSrt(String audioPath, String scriptPath, String resultPath) throws IOException {
+    public void generateSrt(String resourcePath, String scriptPath, String resultPath) throws IOException {
         SentenceTimestamping sentenceTimestamping = new SentenceTimestamping(Files.readAllLines(Paths.get(scriptPath)));
+        String audioPath = AudioEncoder.getAudioFromResource(resourcePath);
         URL audioUrl = new File(audioPath).toURI().toURL();
         List<WordResult> wordResult = aligner.align(audioUrl, sentenceTimestamping.getWords());
         List<TimeFrame> timeFramesWords = interpolateMissing(sentenceTimestamping.getWords(),wordResult);
