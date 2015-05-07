@@ -18,14 +18,14 @@ public class TimestampInterpolator {
     public TimestampInterpolator(List<String> words, List<WordResult> results) {
         currentTimestamp = 0;
         missing = 0;
-        timestamps = new ArrayList<TimeFrame>();
-        ArrayList<TimeFrame> interpolated = new ArrayList<TimeFrame>();
+        timestamps = new ArrayList<>();
+        ArrayList<TimeFrame> interpolated = new ArrayList<>();
         ListIterator<String> wordsIterator = words.listIterator();
         ListIterator<WordResult> resultsIterator = results.listIterator();
         do {
             TimeFrame syncPoint = sync(wordsIterator, resultsIterator);
-            currentTimestamp = syncPoint.getEnd();
             addMissing(syncPoint);
+            currentTimestamp = syncPoint.getEnd(); //switch these lines
             timestamps.add(syncPoint);
         }
         while (resultsIterator.hasNext());
@@ -65,6 +65,7 @@ public class TimestampInterpolator {
         do {
             timestamps.add(new TimeFrame(currentTimestamp, currentTimestamp+lastInterval));
             currentTimestamp+=lastInterval;
+            wordsIterator.next();
         } while(wordsIterator.hasNext());
     }
 
