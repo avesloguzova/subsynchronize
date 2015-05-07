@@ -24,7 +24,7 @@ public class Main {
         try {
             userInterface = new UserInterface();
             frame.getContentPane().add(userInterface.getPanel());
-            //Display the window.
+            //Display the window..
             frame.pack();
             frame.setVisible(true);
         } catch (IOException e) {
