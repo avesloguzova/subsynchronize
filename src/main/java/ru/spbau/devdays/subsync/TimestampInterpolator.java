@@ -18,8 +18,7 @@ public class TimestampInterpolator {
     public TimestampInterpolator(List<String> words, List<WordResult> results) {
         currentTimestamp = 0;
         missing = 0;
-        timestamps = new ArrayList<>();
-        ArrayList<TimeFrame> interpolated = new ArrayList<>();
+        timestamps = new ArrayList<TimeFrame>();
         ListIterator<String> wordsIterator = words.listIterator();
         ListIterator<WordResult> resultsIterator = results.listIterator();
         do {

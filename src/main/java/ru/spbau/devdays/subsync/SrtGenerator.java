@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by avesloguzova on 5/6/15.
@@ -29,7 +30,15 @@ public class SrtGenerator {
         aligner = new SpeechAligner(amPath, dictPath, null);
     }
 
-    public void generateSrt(String resourcePath, String scriptPath, String resultPath) throws IOException {
+    private static String getTime(long millis) {
+        long second = TimeUnit.MILLISECONDS.toSeconds(millis);
+        long minute = TimeUnit.MILLISECONDS.toMinutes(millis);
+        long hour = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.SECONDS.toMillis(second);
+        return String.format("%02d:%02d:%02d:%d", hour, minute, second, millis);
+    }
+
+    public void generateSrt(String audioPath, String scriptPath, String resultPath) throws IOException {
         SentenceTimestamping sentenceTimestamping = new SentenceTimestamping(Files.readAllLines(Paths.get(scriptPath)));
         String audioPath = AudioEncoder.getAudioFromResource(resourcePath);
         URL audioUrl = new File(audioPath).toURI().toURL();
@@ -71,12 +80,6 @@ public class SrtGenerator {
 
         }
 
-    }
-
-    private static String getTime(long millis) {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(millis);
-        return new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
     }
 
 }
