@@ -1,3 +1,5 @@
+package ru.spbau.devdays.subsync;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,8 +24,9 @@ public class SentenceTimestamping {
     }
 
     public List<String> getWords() {
-        return plainWords;
+        return Collections.unmodifiableList(plainWords);
     }
+    public List<Sentence> getSentence(){ return Collections.unmodifiableList(sentences);}
 
     private int addSentence(String sentence, int startIndex)
     {
