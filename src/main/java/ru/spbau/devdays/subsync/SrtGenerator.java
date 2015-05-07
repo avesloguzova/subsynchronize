@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * Created by avesloguzova on 5/6/15.
@@ -27,6 +28,16 @@ public class SrtGenerator {
         // Set path to dictionary.
         String dictPath = "resource:/edu/cmu/sphinx/models/en-us/cmudict-en-us.dict";
         aligner = new SpeechAligner(amPath, dictPath, null);
+    }
+
+    private static String getTime(long millis) {
+        final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        cal.setTimeInMillis(millis);
+        return new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getTime(10));
     }
 
     public void generateSrt(String audioPath, String scriptPath, String resultPath) throws IOException {
@@ -70,12 +81,6 @@ public class SrtGenerator {
 
         }
 
-    }
-
-    private static String getTime(long millis) {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(millis);
-        return new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
     }
 
 }

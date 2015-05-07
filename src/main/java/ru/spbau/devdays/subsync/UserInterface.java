@@ -11,30 +11,37 @@ import java.io.IOException;
  * Created by sasha on 5/6/15.
  */
 public class UserInterface {
+    private final SrtGenerator generator;
     private JTextField audioField;
     private JFileChooser addAudioDialog = new JFileChooser();
     private JTextField subscriptField;
     private JFileChooser addScriptDialog = new JFileChooser();
     private JTextField resultField;
-
-
     private JButton runButton;
     private JButton addAudioButton;
     private JButton addSubscriptButton;
-
-
+    private JButton popUpButton;
     private JPanel myPanel;
-    public UserInterface(){
+
+    public UserInterface() throws IOException {
+        generator = new SrtGenerator();
+        popUpButton = new JButton();
+        popUpButton.setText("OK");
         runButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    SrtGenerator generathor = new SrtGenerator();
-                    if(!audioField.getText().isEmpty()&&!subscriptField.getText().isEmpty()&&!resultField.getText().isEmpty())
-                        generathor.generateSrt(audioField.getText(), subscriptField.getText(), resultField.getText());
 
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+                if (!audioField.getText().isEmpty() && !subscriptField.getText().isEmpty() && !resultField.getText().isEmpty())
+                    new Runnable() {
+                        public void run() {
+                            try {
+                                generator.generateSrt(audioField.getText(), subscriptField.getText(), resultField.getText());
+                                JOptionPane.showMessageDialog(myPanel, "Ready!!!");
+                            } catch (IOException e1) {
+                                JOptionPane.showMessageDialog(myPanel, "Some error is occurs");
+                            }
+                        }
+                    }.run();
+
             }
         });
         addAudioButton.addActionListener(new ActionListener() {

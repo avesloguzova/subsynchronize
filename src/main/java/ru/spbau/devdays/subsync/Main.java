@@ -20,11 +20,17 @@ public class Main {
         JFrame frame = new JFrame("SubSynchronize");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        UserInterface userInterface = new UserInterface();
-        frame.getContentPane().add(userInterface.getPanel());
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
+        UserInterface userInterface = null;
+        try {
+            userInterface = new UserInterface();
+            frame.getContentPane().add(userInterface.getPanel());
+            //Display the window.
+            frame.pack();
+            frame.setVisible(true);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(frame, "Some error is occurs");
+        }
+
     }
 }
 
