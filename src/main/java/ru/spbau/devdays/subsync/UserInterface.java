@@ -16,12 +16,12 @@ public class UserInterface {
     private JTextField subscriptField;
     private JFileChooser addScriptDialog = new JFileChooser();
     private JTextField resultField;
-    private JFileChooser addResultDialog = new JFileChooser();
+
 
     private JButton runButton;
     private JButton addAudioButton;
     private JButton addSubscriptButton;
-    private JButton addPathToResultButton;
+
 
     private JPanel myPanel;
     public UserInterface(){
@@ -52,18 +52,12 @@ public class UserInterface {
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     File file = addScriptDialog.getSelectedFile();
                     subscriptField.setText(file.getAbsolutePath());
+                    resultField.setText(file.getAbsolutePath() + ".srt");
+
                 }
             }
         });
-        addPathToResultButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int returnVal = addResultDialog.showOpenDialog(myPanel);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    File file = addScriptDialog.getSelectedFile();
-                    resultField.setText(file.getAbsolutePath());
-                }
-            }
-        });
+
     }
 
     public Component getPanel() {
