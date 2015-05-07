@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by avesloguzova on 5/6/15.
@@ -31,13 +29,11 @@ public class SrtGenerator {
     }
 
     private static String getTime(long millis) {
-        final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
-        cal.setTimeInMillis(millis);
-        return new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getTime(10));
+        long second = TimeUnit.MILLISECONDS.toSeconds(millis);
+        long minute = TimeUnit.MILLISECONDS.toMinutes(millis);
+        long hour = TimeUnit.MILLISECONDS.toHours(millis);
+        millis -= TimeUnit.SECONDS.toMillis(second);
+        return String.format("%02d:%02d:%02d:%d", hour, minute, second, millis);
     }
 
     public void generateSrt(String audioPath, String scriptPath, String resultPath) throws IOException {
