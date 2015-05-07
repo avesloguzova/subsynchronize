@@ -33,15 +33,16 @@ public class SrtGenerator {
         SentenceTimestamping sentenceTimestamping = new SentenceTimestamping(Files.readAllLines(Paths.get(scriptPath)));
         URL audioUrl = new File(audioPath).toURI().toURL();
         List<WordResult> wordResult = aligner.align(audioUrl, sentenceTimestamping.getWords());
-        List<TimeFrame> timeFramesWords = interpolateMissing(sentenceTimestamping.getWords(),wordResult);
-        setSentenseTiming(timeFramesWords,sentenceTimestamping);
-        writeSrt(sentenceTimestamping,resultPath);
+        List<TimeFrame> timeFramesWords = interpolateMissing(sentenceTimestamping.getWords(), wordResult);
+        setSentenseTiming(timeFramesWords, sentenceTimestamping);
+        writeSrt(sentenceTimestamping, resultPath);
     }
 
     private List<TimeFrame> interpolateMissing(List<String> words, List<WordResult> results) {
         TimestampInterpolator ts = new TimestampInterpolator(words, results);
         return ts.getTnterpolatedTimestamps();
     }
+
     private void setSentenseTiming(List<TimeFrame> timeFramesWords,
                                    SentenceTimestamping timestamping) {
         for (Sentence sentence : timestamping.getSentence()) {
@@ -51,22 +52,30 @@ public class SrtGenerator {
         }
     }
 
-    private void writeSrt(SentenceTimestamping timestamping, String resultPath) throws IOException {
+    private void writeSrt(SentenceTimestamping timestamping, String resultPath) {
 
-        BufferedWriter out = new BufferedWriter(new FileWriter(resultPath, false));
-        for (Sentence sentence : timestamping.getSentence()) {
-            out.write(sentence.getContent());
-            out.newLine();
-            out.write(String.format("%s --> %s", getTime(sentence.getStartTiming()), getTime(sentence.getFinishTiming())));
+        BufferedWriter out;
+        try {
+            out = new BufferedWriter(new FileWriter(resultPath, false));
+            for (Sentence sentence : timestamping.getSentence()) {
+                out.write(sentence.getContent());
+                out.newLine();
+                out.write(String.format("%s --> %s", getTime(sentence.getStartTiming()), getTime(sentence.getFinishTiming())));
+                out.newLine();
+                out.newLine();
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+
         }
+
     }
 
     private static String getTime(long millis) {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(millis);
-        final String timeString =
-                new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
-        return timeString;
+        return new SimpleDateFormat("HH:mm:ss,SSS").format(cal.getTime());
     }
 
 }
