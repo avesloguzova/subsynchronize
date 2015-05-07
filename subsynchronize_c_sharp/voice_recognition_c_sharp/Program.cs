@@ -14,7 +14,7 @@ namespace voice_recognition_c_sharp
             int subtitleDurationInSec = 3;
             string outputFile = @"C:\Users\Denis\Desktop\voice_recognition_c_sharp\voice_recognition_c_sharp\voice_recognition_c_sharp\text.txt";
 
-            var streamChunker = new StreamChunker("D:\\FakeDesktop\\ESLPod11001.wav", subtitleDurationInSec);
+            var streamChunker = new StreamChunker("D:\\FakeDesktop\\ESLPod1100.wav", subtitleDurationInSec);
             var byteChunks = streamChunker.GetStreams();
 
             StreamRecogniser recogniser = new StreamRecogniser();

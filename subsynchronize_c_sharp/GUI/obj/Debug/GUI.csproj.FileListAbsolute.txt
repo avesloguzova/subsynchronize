@@ -1,0 +1,11 @@
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\bin\Debug\GUI.exe.config
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\bin\Debug\GUI.exe
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\bin\Debug\GUI.pdb
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\bin\Debug\SubsynchronizeLib.dll
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\bin\Debug\SubsynchronizeLib.pdb
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.Main.resources
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.exe
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\GUI\obj\Debug\GUI.pdb

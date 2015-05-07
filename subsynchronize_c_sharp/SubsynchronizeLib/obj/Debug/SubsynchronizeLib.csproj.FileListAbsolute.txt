@@ -1,0 +1,6 @@
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\bin\Debug\SubsynchronizeLib.dll
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\bin\Debug\SubsynchronizeLib.pdb
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\bin\Debug\NAudio.dll
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\bin\Debug\NAudio.xml
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\obj\Debug\SubsynchronizeLib.dll
+C:\Users\Denis\Desktop\subsynchronize\subsynchronize_c_sharp\SubsynchronizeLib\obj\Debug\SubsynchronizeLib.pdb
